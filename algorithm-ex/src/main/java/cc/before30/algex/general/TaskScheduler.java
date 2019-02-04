@@ -1,6 +1,6 @@
 package cc.before30.algex.general;
 
-import java.util.HashMap;
+import java.util.*;
 
 /**
  * https://leetcode.com/problems/task-scheduler/?fbclid=IwAR1oa44IgiJjMJSQnS-ANVNDVEdzH8mxzyuD473RspMB_izol3hLu9_8tZ8
@@ -40,11 +40,39 @@ public class TaskScheduler {
             }
         }
 
-        int totalCount = tasks.length;
+        // 빈도 가장 높은 것 부터 n개를 뽑는다.
+        int count = 0;
+        int total = tasks.length;
 
-        while (totalCount > 0) {
-
+        while (total > 0) {
+            List<Character> highFrequencyKey = getHighFrequencyKey(taskMap, n);
+            for (Character c : highFrequencyKey) {
+                taskMap.put(c, taskMap.get(c) - 1);
+            }
+            count = count + highFrequencyKey.size();
+            total = total - highFrequencyKey.size();
+            if (total > 0) {
+                count++;
+            }
         }
-        return 0;
+
+        return count;
     }
+
+    public List<Character> getHighFrequencyKey(Map<Character, Integer> map, int n) {
+        // map을 order by 한다
+        // n개의 키를 list에 넣고 리턴
+
+        List<Map.Entry<Character, Integer>> list = new ArrayList<>(map.entrySet());
+        list.sort(Map.Entry.comparingByValue());
+        List<Character> result = new ArrayList<>();
+
+        for (int i=0; i<Math.min(list.size(), n); i++) {
+            result.add(list.get(i).getKey());
+        }
+
+        return result;
+    }
+
+
 }
