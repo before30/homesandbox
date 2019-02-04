@@ -1,3 +1,5 @@
 rootProject.name = 'homesandbox'
 include 'algorithm-ex'
+include 'sample-springboot2'
+include 'sample-failsafe'
 

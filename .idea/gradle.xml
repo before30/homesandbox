@@ -10,6 +10,8 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/algorithm-ex" />
+            <option value="$PROJECT_DIR$/sample-failsafe" />
+            <option value="$PROJECT_DIR$/sample-springboot2" />
           </set>
         </option>
         <option name="useAutoImport" value="true" />
