@@ -1,0 +1,7 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+me.home.before30.r4j.circuitbreaker.autoconfigure.CircuitBreakerAutoConfiguration,\
+me.home.before30.r4j.circuitbreaker.autoconfigure.CircuitBreakerMetricsAutoConfiguration,\
+me.home.before30.r4j.circuitbreaker.autoconfigure.CircuitBreakerPrometheusAutoConfiguration,\
+me.home.before30.r4j.ratelimiter.autoconfigure.RateLimiterAutoConfiguration,\
+me.home.before30.r4j.ratelimiter.autoconfigure.RateLimiterMetricsAutoConfiguration,\
+me.home.before30.r4j.ratelimiter.autoconfigure.RateLimiterPrometheusAutoConfiguration

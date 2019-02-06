@@ -1,0 +1,51 @@
+buildscript {
+    ext {
+        springBootVersion = '2.1.2.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'me.home.before30.homesandbox'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+    compileOnly 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'io.projectreactor:reactor-test'
+    compile group: 'io.github.resilience4j', name: 'resilience4j-circuitbreaker', version: '0.13.2'
+    compile group: 'io.github.resilience4j', name: 'resilience4j-ratelimiter', version: '0.13.2'
+    compile group: 'io.github.resilience4j', name: 'resilience4j-core', version: '0.13.2'
+    compile group: 'io.github.resilience4j', name: 'resilience4j-retry', version: '0.13.2'
+    compile group: 'io.github.resilience4j', name: 'resilience4j-consumer', version: '0.13.2'
+    compile group: 'io.github.resilience4j', name: 'resilience4j-bulkhead', version: '0.13.2'
+    compile group: 'io.github.resilience4j', name: 'resilience4j-timelimiter', version: '0.13.2'
+    compile group: 'io.github.resilience4j', name: 'resilience4j-annotations', version: '0.13.2'
+    compile group: 'io.github.resilience4j', name: 'resilience4j-spring', version: '0.13.2'
+    compile group: 'io.github.resilience4j', name: 'resilience4j-prometheus', version: '0.13.2'
+    compile group: 'io.github.resilience4j', name: 'resilience4j-circularbuffer', version: '0.13.2'
+    compile group: 'io.github.resilience4j', name: 'resilience4j-metrics', version: '0.13.2'
+    compile group: 'io.github.resilience4j', name: 'resilience4j-reactor', version: '0.13.2'
+    compile group: 'io.github.resilience4j', name: 'resilience4j-micrometer', version: '0.13.2'
+    compile group: 'io.github.resilience4j', name: 'resilience4j-cache', version: '0.13.2'
+    compile group: 'io.github.resilience4j', name: 'resilience4j-test', version: '0.13.2'
+    compile group: 'io.github.resilience4j', name: 'resilience4j-spring-boot', version: '0.13.2'
+//    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+    compileOnly "org.springframework.boot:spring-boot-configuration-processor"
+}
+
+compileJava.dependsOn(processResources)
