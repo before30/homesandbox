@@ -1,5 +1,6 @@
 package cc.before30.algex.array;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -21,6 +22,9 @@ import java.util.Set;
  * Output: 2
  *
  */
+
+// TODO : 다른방식으로 풀어보기
+// https://leetcode.com/problems/majority-element/solution/
 public class MajorityElement {
     public int majorityElement(int[] nums) {
 
@@ -44,4 +48,11 @@ public class MajorityElement {
 
             return maxKey;
     }
+
+    public int majorityElement3(int[] nums) {
+        Arrays.sort(nums);
+        return nums[nums.length/2];
+    }
+
+
 }
