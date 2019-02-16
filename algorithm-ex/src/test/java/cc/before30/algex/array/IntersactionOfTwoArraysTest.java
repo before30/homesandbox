@@ -1,0 +1,43 @@
+package cc.before30.algex.array;
+
+import org.junit.Assert;
+import org.junit.Test;
+
+import java.util.HashSet;
+
+import static org.junit.Assert.*;
+
+public class IntersactionOfTwoArraysTest {
+
+    @Test
+    public void intersection() {
+        IntersactionOfTwoArrays intersaction = new IntersactionOfTwoArrays();
+
+        int[] nums1 = {1, 2, 2, 1};
+        int[] nums2 = {2, 2};
+        int[] result = {2};
+        Assert.assertTrue(isSameArrray(result, intersaction.intersection(nums1, nums2)));
+
+        int[] nums3 = {4, 9, 5};
+        int[] nums4 = {9, 4, 9, 8, 4};
+        int[] result2 = {9, 4};
+        Assert.assertTrue(isSameArrray(result2, intersaction.intersection(nums3, nums4)));
+    }
+
+    public boolean isSameArrray(int[] array1, int[] array2) {
+        if (array1.length != array2.length) {
+            return false;
+        }
+
+        HashSet<Integer> set = new HashSet<>();
+        for (int i = 0; i < array1.length; i++) {
+            set.add(array1[i]);
+        }
+
+        for (int i = 0; i < array2.length; i++) {
+            set.remove(array2[i]);
+        }
+
+        return set.size() == 0 ? true : false;
+    }
+}
