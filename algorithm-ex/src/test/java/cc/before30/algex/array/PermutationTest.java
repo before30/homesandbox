@@ -20,5 +20,10 @@ public class PermutationTest {
         Assert.assertEquals(2, permutation.permute(input2).size());
         Assert.assertEquals(6, permutation.permute(input3).size());
         Assert.assertEquals(24, permutation.permute(input4).size());
+
+        permutation.permute2(input4);
+//        Assert.assertEquals(2, permutation.permute2(input2).size());
+//        Assert.assertEquals(6, permutation.permute2(input3).size());
+//        Assert.assertEquals(24, permutation.permute2(input4).size());
     }
 }
