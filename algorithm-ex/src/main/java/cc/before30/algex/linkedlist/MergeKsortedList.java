@@ -1,8 +1,43 @@
 package cc.before30.algex.linkedlist;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.PriorityQueue;
 
 public class MergeKsortedList {
+
+    public ListNode mergeKLists2(ListNode[] lists) {
+        ListNode head = null, last=null;
+
+        PriorityQueue<ListNode> pq=new PriorityQueue<>(new Comparator<ListNode>(){
+            public int compare(ListNode a, ListNode b)
+            {
+                return a.val - b.val;
+            }
+        });
+
+        for (int i = 0; i < lists.length; i++)
+            pq.add(lists[i]);
+
+        while (!pq.isEmpty()) {
+            ListNode top = pq.peek();
+            pq.remove();
+
+            if (top.next != null)
+                pq.add(top.next);
+
+            if (head == null) {
+                head = top;
+                last = top;
+            }
+            else {
+                last.next = top;
+                last = top;
+            }
+        }
+        return head;
+
+    }
 
     public ListNode mergeKLists(ListNode[] lists) {
 
@@ -11,9 +46,11 @@ public class MergeKsortedList {
         while (true) {
             int min = Integer.MAX_VALUE;
             int minIndex = -1;
+            ListNode minNode = null;
             for (int i = 0; i < lists.length; i++) {
                 if (lists[i] != null) {
                     if (min > lists[i].val) {
+                        minNode = lists[i];
                         min = lists[i].val;
                         minIndex = i;
                     }
@@ -25,14 +62,14 @@ public class MergeKsortedList {
             } else {
                 lists[minIndex] = lists[minIndex].next;
                 if (root == null) {
-                    root = new ListNode(min);
+                    root = minNode;
                     current = root;
                 } else {
-                    ListNode node = new ListNode(min);
-                    current.next = node;
-                    current = node;
+                    current.next = minNode;
+                    current = current.next;
                 }
             }
+
 
         }
         return root;

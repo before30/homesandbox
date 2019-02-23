@@ -22,7 +22,7 @@ public class MergeKsortedListTest {
         ListNode[] node = MergeKsortedList.createNode(input);
 
         MergeKsortedList merge = new MergeKsortedList();
-        ListNode listNode = merge.mergeKLists(node);
+        ListNode listNode = merge.mergeKLists2(node);
 
         while (listNode != null) {
             System.out.println(listNode.val);
