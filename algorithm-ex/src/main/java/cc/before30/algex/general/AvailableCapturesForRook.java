@@ -60,4 +60,43 @@ public class AvailableCapturesForRook {
 
         return result;
     }
+
+    public int numRookCapture2(char[][] board) {
+        int row_r = -1;
+        int col_r = -1;
+
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if (board[i][j] == 'R') {
+                    row_r = i;
+                    col_r = j;
+                }
+            }
+        }
+
+        return numRookCaptures(board, row_r, col_r, 'N') +
+                numRookCaptures(board, row_r, col_r, 'S') +
+                numRookCaptures(board, row_r, col_r, 'E') +
+                numRookCaptures(board, row_r, col_r, 'W');
+    }
+    public int numRookCaptures(char[][] board, int row, int col, char direction){
+        if (row < 0 || col < 0 || row > 8 || col > 8) {
+            return 0;
+        }
+
+        if (board[row][col] == 'p') return 1;
+        else if (board[row][col] == 'B') return 0;
+
+        switch (direction) {
+            case 'N':
+                return numRookCaptures(board, row-1, col, 'N');
+            case 'S':
+                return numRookCaptures(board, row+1, col, 'S');
+            case 'E':
+                return numRookCaptures(board, row, col+1, 'E');
+            case 'W':
+            default:
+                return numRookCaptures(board, row, col-1, 'W');
+        }
+    }
 }
