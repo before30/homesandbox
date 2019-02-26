@@ -10,6 +10,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/algorithm-ex" />
+            <option value="$PROJECT_DIR$/code-ex" />
             <option value="$PROJECT_DIR$/r4j-spring-boot-starter" />
             <option value="$PROJECT_DIR$/sample-failsafe" />
             <option value="$PROJECT_DIR$/sample-springboot2" />

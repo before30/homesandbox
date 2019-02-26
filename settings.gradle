@@ -3,4 +3,5 @@ include 'algorithm-ex'
 include 'sample-springboot2'
 include 'sample-failsafe'
 include 'r4j-spring-boot-starter'
+include 'code-ex'
 
