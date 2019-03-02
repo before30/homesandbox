@@ -9,6 +9,27 @@ import java.util.regex.Pattern;
 public class RecorderLogFiles {
 
     public String[] reorderLogFiles(String[] logs) {
+        Arrays.sort(logs, (log1, log2) -> {
+            String[] split1 = log1.split(" ", 2);
+            String[] split2 = log2.split(" ", 2);
+            boolean isDigit1 = Character.isDigit(split1[1].charAt(0));
+            boolean isDigit2 = Character.isDigit(split2[1].charAt(0));
+
+            if (!isDigit1 && !isDigit2) {
+                String others1 = log1.substring(log1.indexOf(" "));
+                String others2 = log2.substring(log2.indexOf(" "));
+
+                return others1.compareTo(others2);
+            }
+
+            return isDigit1 ? (isDigit2? 0 : 1) : -1;
+        });
+
+        return logs;
+    }
+
+
+    public String[] reorderLogFiles2(String[] logs) {
 
         List<String> alphabetricKeyList = new ArrayList<>();
         List<String> numericKeyList = new ArrayList<>();
