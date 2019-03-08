@@ -1,11 +1,33 @@
 package cc.before30.algex.general;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class KClosestPoint {
+
+    public int[][] kClosest2(int[][] points, int K) {
+        SortedMap<Integer, int[]> map = new TreeMap<>();
+
+        for (int i = 0; i < points.length; i++) {
+            map.put(dist(points[i]), points[i]);
+        }
+
+        int[][] ans = new int[K][2];
+        Set<Map.Entry<Integer, int[]>> entries = map.entrySet();
+        Iterator<Map.Entry<Integer, int[]>> i = entries.iterator();
+
+        int t = 0;
+        while(i.hasNext()) {
+            if (t >= K) {
+                break;
+            }
+            Map.Entry<Integer, int[]> val = i.next();
+            ans[t++] = val.getValue();
+        }
+
+        return ans;
+    }
+
     public int[][] kClosest(int[][] points, int K) {
 
         List<Integer> collect = Arrays.stream(points).map(point ->

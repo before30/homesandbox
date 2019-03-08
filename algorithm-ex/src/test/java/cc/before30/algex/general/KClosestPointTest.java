@@ -25,8 +25,8 @@ public class KClosestPointTest {
         int[][] points2 = new int[][] {{3,3}, {5,-1}, {-2,4}};
         int[][] output2 = new int[][] {{3,3}, {-2,4}};
 
-        Assert.assertTrue(Arrays.deepEquals(output1, closest.kClosest(points1, 1)));
-        Assert.assertTrue(Arrays.deepEquals(output2, closest.kClosest(points2, 2)));
+        Assert.assertTrue(Arrays.deepEquals(output1, closest.kClosest2(points1, 1)));
+        Assert.assertTrue(Arrays.deepEquals(output2, closest.kClosest2(points2, 2)));
 
     }
 }
