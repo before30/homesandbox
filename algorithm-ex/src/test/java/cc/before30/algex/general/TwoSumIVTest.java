@@ -15,8 +15,12 @@ public class TwoSumIVTest {
         TreeNode tree1 = createTree(a1);
         TwoSumIV twoSumIV = new TwoSumIV();
 
-        Assert.assertTrue(twoSumIV.findTarget(tree1, 9));
-        Assert.assertFalse(twoSumIV.findTarget(tree1, 28));
+        List<Integer> a2 = Arrays.asList(2, 1, 3);
+        TreeNode tree2 = createTree(a2);
+
+//        Assert.assertTrue(twoSumIV.findTarget(tree1, 9));
+//        Assert.assertFalse(twoSumIV.findTarget(tree1, 28));
+        Assert.assertTrue(twoSumIV.findTarget(tree2, 4));
 
     }
 

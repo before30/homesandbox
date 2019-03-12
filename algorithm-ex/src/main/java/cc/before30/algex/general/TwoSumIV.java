@@ -8,7 +8,7 @@ public class TwoSumIV {
 
     public boolean findTarget(TreeNode root, int k) {
         List<Integer> list = treeToList(root);
-
+        list.sort((o1, o2) -> o1-o2);
         int i = 0;
         int j = list.size() - 1;
 
