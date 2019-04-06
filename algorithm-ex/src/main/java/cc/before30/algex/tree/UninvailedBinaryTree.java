@@ -2,8 +2,6 @@ package cc.before30.algex.tree;
 
 public class UninvailedBinaryTree {
     public boolean isUnivalTree(TreeNode root) {
-
-
         return retrieveTree(root, root.val);
     }
 
