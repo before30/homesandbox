@@ -25,7 +25,7 @@ public class ThreeSum {
         for (int i = 0; i < nums.length - 1; i++) {
             for (int j = i + 1; j < nums.length; j++) {
                 int k = find(-1 * (nums[i] + nums[j]), nums);
-                if (k != -1 ) {
+                if (k != -1 && k != i && k != j) {
                     List<Integer> list = Arrays.asList(nums[i], nums[j], nums[k]);
                     list.sort((x,y) -> x - y);
                     resultSet.add(list);
@@ -39,36 +39,18 @@ public class ThreeSum {
         }
 
         return result;
-//        ArrayList<List<Integer>> result = new ArrayList<>();
-//
-//        for (int i = 0; i < nums.length - 2; i++) {
-//            for (int j = i + 1; j < nums.length - 1; j++) {
-//                for (int k = j + 1; k < nums.length; k++ ) {
-//                    if (nums[i] + nums[j] + nums[k] == 0) {
-//                        System.out.println("num[" + i + "]:" + nums[i] +"+num["+j+"]:"+nums[j] + "+num[" + k +"]:"+nums[k]);
-//                        result.add(Arrays.asList(nums[i], nums[j], nums[k]));
-//                    }
-//                }
-//            }
-//        }
-////        List<Integer> answer_list01 = Arrays.asList(-1, 0, 1);
-////        List<Integer> answer_list02 = Arrays.asList(-1, -1, 2);
-////        result.add(answer_list01);
-////        result.add(answer_list02);
-
-//        return result;
     }
 
     private int find(int num, int[] nums) {
-        int s = 0;
-        int e = nums.length - 1;
+        int lo = 0;
+        int hi = nums.length - 1;
 
-        while (s < e) {
-            int m = (s + e) / 2;
+        while (lo <= hi) {
+            int m = lo + (hi - lo) / 2;
             if (nums[m] > num) {
-                e = m - 1;
+                hi = m - 1;
             } else if (nums[m] < num) {
-                s = m + 1;
+                lo = m + 1;
             } else {
                 return m;
             }
