@@ -3,13 +3,12 @@ package cc.before30.algex.general;
 import org.junit.Assert;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
-public class ValidParentheseTest {
+public class ValidParenthesesTest {
 
     @Test
     public void isValid() {
-        ValidParenthese validParenthese = new ValidParenthese();
+
+        ValidParentheses validParenthese = new ValidParentheses();
         Assert.assertTrue(validParenthese.isValid("()"));
         Assert.assertTrue(validParenthese.isValid("()[]{}"));
         Assert.assertFalse(validParenthese.isValid("(]"));
