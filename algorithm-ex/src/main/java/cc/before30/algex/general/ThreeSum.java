@@ -1,8 +1,6 @@
 package cc.before30.algex.general;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
  * https://leetcode.com/problems/3sum/
@@ -21,24 +19,62 @@ import java.util.List;
  */
 public class ThreeSum {
     public List<List<Integer>> threeSum(int[] nums) {
-        ArrayList<List<Integer>> result = new ArrayList<>();
 
-        for (int i = 0; i < nums.length - 2; i++) {
-            for (int j = i + 1; j < nums.length - 1; j++) {
-                for (int k = j + 1; k < nums.length; k++ ) {
-                    if (nums[i] + nums[j] + nums[k] == 0) {
-                        System.out.println("num[" + i + "]:" + nums[i] +"+num["+j+"]:"+nums[j] + "+num[" + k +"]:"+nums[k]);
-                        result.add(Arrays.asList(nums[i], nums[j], nums[k]));
-                    }
+        Arrays.sort(nums);
+        HashSet<List<Integer>> resultSet = new HashSet<>();
+        for (int i = 0; i < nums.length - 1; i++) {
+            for (int j = i + 1; j < nums.length; j++) {
+                int k = find(-1 * (nums[i] + nums[j]), nums);
+                if (k != -1 ) {
+                    List<Integer> list = Arrays.asList(nums[i], nums[j], nums[k]);
+                    list.sort((x,y) -> x - y);
+                    resultSet.add(list);
                 }
             }
         }
-//        List<Integer> answer_list01 = Arrays.asList(-1, 0, 1);
-//        List<Integer> answer_list02 = Arrays.asList(-1, -1, 2);
-//        result.add(answer_list01);
-//        result.add(answer_list02);
+
+        List<List<Integer>> result = new ArrayList<>();
+        for(List<Integer> item: resultSet){
+            result.add(item);
+        }
 
         return result;
+//        ArrayList<List<Integer>> result = new ArrayList<>();
+//
+//        for (int i = 0; i < nums.length - 2; i++) {
+//            for (int j = i + 1; j < nums.length - 1; j++) {
+//                for (int k = j + 1; k < nums.length; k++ ) {
+//                    if (nums[i] + nums[j] + nums[k] == 0) {
+//                        System.out.println("num[" + i + "]:" + nums[i] +"+num["+j+"]:"+nums[j] + "+num[" + k +"]:"+nums[k]);
+//                        result.add(Arrays.asList(nums[i], nums[j], nums[k]));
+//                    }
+//                }
+//            }
+//        }
+////        List<Integer> answer_list01 = Arrays.asList(-1, 0, 1);
+////        List<Integer> answer_list02 = Arrays.asList(-1, -1, 2);
+////        result.add(answer_list01);
+////        result.add(answer_list02);
+
+//        return result;
+    }
+
+    private int find(int num, int[] nums) {
+        int s = 0;
+        int e = nums.length - 1;
+
+        while (s < e) {
+            int m = (s + e) / 2;
+            if (nums[m] > num) {
+                e = m - 1;
+            } else if (nums[m] < num) {
+                s = m + 1;
+            } else {
+                return m;
+            }
+        }
+
+        return -1;
     }
 
 }

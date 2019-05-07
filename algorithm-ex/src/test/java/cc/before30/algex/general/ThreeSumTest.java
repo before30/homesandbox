@@ -32,13 +32,15 @@ public class ThreeSumTest {
         ThreeSum threeSum = new ThreeSum();
 
         int[] input = {-1, 0, 1, 2, -1, -4};
-        Assert.assertEquals(2, threeSum.threeSum(input).size());
-        List<Integer> answer_list01 = Arrays.asList(-1, 0, 1);
-        List<Integer> answer_list02 = Arrays.asList(-1, -1, 2);
 
-        List<List<Integer>> lists = threeSum.threeSum(input);
-        Assert.assertTrue(compareList(lists.get(0), answer_list01));
-        Assert.assertTrue(compareList(lists.get(1), answer_list02));
+        System.out.println(threeSum.threeSum(input));
+        Assert.assertEquals(2, threeSum.threeSum(input).size());
+
+        int[] input2 = {3,-2,0,9,-10,6,-5,-3,-5,-3,9,-3,4,4,-6,-1,8,9,-2,-6,5,-8,6};
+        Arrays.sort(input2);
+        Arrays.stream(input2).forEach(System.out::println);
+        System.out.println(threeSum.threeSum(input2));
+        Assert.assertEquals(17, threeSum.threeSum(input2).size());
     }
 
     public boolean compareList(List<Integer> listA, List<Integer> listB) {
